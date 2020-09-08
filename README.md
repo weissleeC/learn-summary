@@ -148,16 +148,22 @@
 	- 什么是虚拟 DOM ?
 		+ 在 React 中，render 执行的结果得到的并不是真正的 DOM 节点，结果仅仅是轻量级的 JavaScript 对象，我们称之为 virtual DOM。
 
-	```
-	| Real DOM                   | Virtual DOM   			         |
-	| -------------------------- |:-------------------------- :|
-	| 1. 更新缓慢									 | 1. 更新更快								  |
-	| 2. 可以直接更新 HTML				  | 2. 无法直接更新 HTML         |
-	| 3. 如果元素更新，则创建新 DOM	  | 3. 如果元素更新，则更新 JSX   |
-	| 4. DOM 操作代价很高						| 4. DOM 操作非常简单          |
-	| 5. 消耗的内存较多							| 5. 很少的内存消耗             |
-	```
 
+  - 两者的区别
+    + Real DOM
+      - 更新缓慢
+      - 可以直接更新 HTML
+      - 如果元素更新，则创建新 DOM
+      - DOM 操作代价很高
+      - 消耗的内存较多	
+
+    + Real DOM
+      - 更新更快
+      - 无法直接更新 HTML
+      - 如果元素更新，则更新 JSX
+      - DOM 操作非常简单 
+      - 很少的内存消耗	
+      
 
 3. #### 什么是 JSX
 	> JSX 是 javascript XML 的简写。 是 React 使用的一种文件，它利用 JavaScript 的表现力和类似 HTML 的模板语法。因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称。 例如，class 变成了 className，而 tabindex 则对应着 tabIndex，for 对应 htmlFor。
