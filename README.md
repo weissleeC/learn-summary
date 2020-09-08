@@ -5,6 +5,7 @@
 1. 说一下 `<label>` 标签的用法
 	`label` 标签主要是方便鼠标点击使用，扩大可点击的范围，增强用户操作体验
 
+***
 
 ### CSS 篇
 
@@ -35,6 +36,7 @@
 3. #### 说一下 css 的权重级别
 	!important > 内联样式 > ID 选择器 > 类选择器 ｜ 属性选择器 ｜ 伪类选择器 >  元素选择器
 
+***
 
 ### Javascript 篇
 
@@ -163,7 +165,7 @@
       - 如果元素更新，则更新 JSX
       - DOM 操作非常简单 
       - 很少的内存消耗	
-      
+
 
 3. #### 什么是 JSX
 	> JSX 是 javascript XML 的简写。 是 React 使用的一种文件，它利用 JavaScript 的表现力和类似 HTML 的模板语法。因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称。 例如，class 变成了 className，而 tabindex 则对应着 tabIndex，for 对应 htmlFor。
