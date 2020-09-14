@@ -41,26 +41,27 @@
 > 列举 es6 的新特性
 
 1. #### 变量声明
-	- 变量声明 `const` 和 `let`，相比之前的 var 变量是没有局部的概念，新变量声明的在局部上做出了优化，不会污染全局。
-		+ 有几点需要注意：
-			- `const` 和 `let` 声明只在最靠近的一个块中（花括号内）有效
-			- 当使用常量 `const` 声明时，请使用大写变量，如：	`CAPITAL_CASING`
-			-  `const` 在声明时必须被赋值
+	> 变量声明 `const` 和 `let`，相比之前的 var 变量是没有局部的概念，新变量声明的在局部上做出了优化，不会污染全局。
+  
+  **有几点需要注意：**
+  - `const` 和 `let` 声明只在最靠近的一个块中（花括号内）有效
+  - 当使用常量 `const` 声明时，请使用大写变量，如：	`CAPITAL_CASING`
+  -  `const` 在声明时必须被赋值
 
 2. #### 模板字符串
-	> 在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。例：
+	在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。例：
 
 	```javascript
 	$("body").html("This demonstrates the output of HTML \ content to the page, including student's\ " + name + ", " + seatNumber + ", " + sex + " and so on.");
 	```
 	
-	对 es6 来说：
+  es6 做法：
 	- 基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定
-	- es6 反引号 (``) 直接搞定。例：
+	- es6 反引号 `(``)` 直接搞定。例：
 
 	```javascript
-	$("body").html(`This demonstrates the output of HTML content to the page, including student's ${name}, ${seatNumber}, ${sex} and so on.`);
-	console.log( `${name}-lastname` )
+  $("body").html(`This demonstrates the output of HTML content to the page, including student's ${name}, ${seatNumber}, ${sex} and so on.`);
+  console.log( `${name}-lastname` )
 	```
 
 3. #### 箭头函数
@@ -69,8 +70,8 @@
 	- 如果只有一个 return， {} 可以省略
 
 	```javascript
-	window.onload = () => {
-		alert('hello, es6');
+  window.onload = () => {
+    alert('hello, es6');
 	}
 
 	let func = a => console.log(a);
@@ -82,13 +83,13 @@
 	```javascript
 	// es6 before
 	function printText(text) {
-		text = text || 'default';
-		console.log(text);
+    text = text || 'default';
+    console.log(text);
 	}
 
 	// es6 after
 	function printText(text = 'default') {
-		console.log(text);
+    console.log(text);
 	}
 	```
 
@@ -98,7 +99,7 @@
 	```javascript
 	// 当被用于迭代器中时，它是一个 Spread 操作符号
 	function foo(x,y,z) {
-		console.log(x,y,z);
+    console.log(x,y,z);
 	}
 
 	let arr = [1,2,3];
@@ -107,7 +108,7 @@
 
 	// 用于函数传参时，是一个 Rest 操作符
 	function foo(...args) {
-		console.log(args);
+    console.log(args);
 	}
 	foo(1,2,3,4,5)
 	```
@@ -117,9 +118,9 @@
 	
 	```javascript
 	let student = {
-		name: 'lee',
-		age: 26,
-		sex: '男',
+    name: 'lee',
+    age: 26,
+   sex: '男',
 	}
 	let { name, age, sex, height = '178'} = student;
 	console.log(name);
