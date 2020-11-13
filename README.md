@@ -47,58 +47,54 @@
 
 1. #### 变量声明
 
-   - 变量声明 `const` 和 `let`，相比之前的 var 变量是没有局部的概念，新变量声明的在局部上做出了优化，不会污染全局。
-     - 有几点需要注意：
-       - `const` 和 `let` 声明只在最靠近的一个块中（花括号内）有效
-       - 当使用常量 `const` 声明时，请使用大写变量，如： `CAPITAL_CASING`
-       - `const` 在声明时必须被赋值
+   > 变量声明 `const` 和 `let`，相比之前的 var 变量是没有局部的概念，新变量声明的在局部上做出了优化，不会污染全局。
+
+   **有几点需要注意：**
+
+- `const` 和 `let` 声明只在最靠近的一个块中（花括号内）有效
+- 当使用常量 `const` 声明时，请使用大写变量，如： `CAPITAL_CASING`
+- `const` 在声明时必须被赋值
 
 2. #### 模板字符串
 
-   > 在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。例：
+   在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。例：
 
    ```javascript
    $("body").html(
-	"This demonstrates the output of HTML  content to the page, including student's " +
-	name +
-	", " +
-	seatNumber +
-	", " +
-	sex +
-	" and so on."
+     "This demonstrates the output of HTML  content to the page, including student's " +
+       name +
+       ", " +
+       seatNumber +
+       ", " +
+       sex +
+       " and so on."
    );
    ```
 
-   对 es6 来说：
+es6 做法： - 基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定 - es6 反引号 ` (``) ` 直接搞定。例：
 
-   - 基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定
-   - es6 反引号 (``) 直接搞定。例：
+    ```javascript
 
-   ```javascript
-   $("body").html(
-     `This demonstrates the output of HTML content to the page, including student's ${name}, ${seatNumber}, ${sex} and so on.`
-   );
-   console.log(`${name}-lastname`);
-   ```
+\$("body").html(`This demonstrates the output of HTML content to the page, including student's ${name}, ${seatNumber}, ${sex} and so on.`);
+console.log( `${name}-lastname` )
+```
 
 3. #### 箭头函数
 
-   > 箭头函数和普通函数没有本质上的区别，更多是写法上。
-
-   - 如果只有一个参数，() 可以省略
-   - 如果只有一个 return， {} 可以省略
-
-   ```javascript
+   ````javascript
    window.onload = () => {
-     alert("hello, es6");
-   };
+     alert('hello, es6');
+   }
 
-   let func = (a) => console.log(a);
-   ```
+    ```javascript
+    window.onload = () => {
+      alert("hello, es6");
+    };
+
+    let func = (a) => console.log(a);
+   ````
 
 4. #### 函数的参数默认值
-
-   > 在 es6 之前，我们往往需要在函数体里面定义参数的默认值，而在 es6 上的写法更简单些，直接圆括号里赋值。
 
    ```javascript
    // es6 before
@@ -117,6 +113,14 @@
 
    > Spread/Rest 指的是 `...`，具体是 Spread 还是 Rest 需要看上下文语境。
 
+   ````javascript
+   // 当被用于迭代器中时，它是一个 Spread 操作符号
+   function foo(x,y,z) {
+    console.log(x,y,z);
+   }
+
+   > Spread/Rest 指的是 `...`，具体是 Spread 还是 Rest 需要看上下文语境。
+
    ```javascript
    // 当被用于迭代器中时，它是一个 Spread 操作符号
    function foo(x, y, z) {
@@ -125,14 +129,12 @@
 
    let arr = [1, 2, 3];
 
-   foo(...arr);
-
    // 用于函数传参时，是一个 Rest 操作符
    function foo(...args) {
-     console.log(args);
+    console.log(args);
    }
-   foo(1, 2, 3, 4, 5);
-   ```
+   foo(1,2,3,4,5)
+   ````
 
 6. #### 对象和数组结构
 
