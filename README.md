@@ -1,15 +1,14 @@
 # 学习总结
 
-### HTML 篇
+## HTML 篇
 
 1. #### 说一下 `<label>` 标签的用法
   `label` 标签主要是方便鼠标点击使用，扩大可点击的范围，增强用户操作体验
 
----
 
-### CSS 篇
+## CSS 篇
 
-1. #### css 水平、垂直居中的写法，至少写出 4 中
+1. #### css 水平、垂直居中的写法
 
   _水平居中_
 
@@ -25,7 +24,7 @@
   - `display: flex + align-items: center`
   - `display: table + display: tabel-cell + vartical-align: middle`
 
-2. #### 说一下盒子模型
+2. #### 盒子模型
 
   盒模型的组成，由里向外 content,padding,border,margin
   在 IE 盒子模型中，width 表示 content+padding+border 这三个部分
@@ -36,12 +35,11 @@
   - `box-sizing: content-box` 是 W3C 盒子模型
   - `box-sizing: border-box` 是 IE 盒子模型
 
-3. #### 说一下 css 的权重级别
+3. #### css 的权重级别
   !important > 内联样式 > ID 选择器 > 类选择器 ｜ 属性选择器 ｜ 伪类选择器 > 元素选择器
 
----
 
-### Javascript 篇
+## Javascript 篇
 
 > 列举 es6 的新特性
 
@@ -51,9 +49,16 @@
 
   **有几点需要注意：**
 
-- `const` 和 `let` 声明只在最靠近的一个块中（花括号内）有效
+- `const` 和 `let` 声明只在一个块中（花括号内）有效
 - 当使用常量 `const` 声明时，请使用大写变量，如： `CAPITAL_CASING`
-- `const` 在声明时必须被赋值
+- `const` 在声明时必须被赋值，并且不能重新对已有变量赋值
+
+```javascript
+if(true){
+  let fruit = 'apple';
+}
+console.log(fruit)  // fruit is not defined
+```
 
 2. #### 模板字符串
 
@@ -75,13 +80,13 @@
   ```
 
 3. #### 箭头函数
-
+  > 只有一个返回值可以忽略掉 {}，只有一个参数可以忽略掉()
   ````javascript
   window.onload = () => {
     alert('hello, es6');
   }
   
-  let func = (a) => console.log(a);
+  let func = a => console.log(a);
   ````
 
 4. #### 函数的参数默认值
@@ -105,43 +110,73 @@
 
   ```javascript
   // 当被用于迭代器中时，它是一个 Spread 操作符号
-  function foo(x,y,z) {
-  console.log(x,y,z);
-  }
-  ```
-
-  ```javascript
-  // 当被用于迭代器中时，它是一个 Spread 操作符号
   function foo(x, y, z) {
     console.log(x, y, z);
   }
 
   let arr = [1, 2, 3];
+  console.log(...arr); // 1 2 3
 
   // 用于函数传参时，是一个 Rest 操作符
-  function foo(...args) {
-  console.log(args);
+  function breakfast(dessert, drink, ...foods) {
+    console.log(dessert, drink, ...foods);
   }
-  foo(1,2,3,4,5)
+  breakfast('🍰', '🍺', '🍎', '🍵', '🍐')  // 🍰 🍺 🍎 🍵 🍐
   ```
 
-6. #### 对象和数组结构
+6. #### 对象和数组解构
 
   > 我们经常需要在对象和数组内提取相关的数据，往往我们需要遍历才能完成。而在 es6 添加了简化这种任务的新特性：解构。解构是一种打破数据解构，将其拆分成更小部分的过程。解构必须提供初始值。即等号左右不能为 null,undefiend 或者不提供，解构的变量如果不存在对象中会被赋值为 `undefiend`，我们可以为解构的变量提供一个人默认值，在属性名字后添加等号和默认值即可
 
   ```javascript
+  // 解构对象
   let student = {
     name: "lee",
     age: 26,
     sex: "男",
   };
   let { name, age, sex, height = "178" } = student;
-  console.log(name);
+  console.log(name); // lee
+
+  // 解构数组
+  function breakfast() {
+    return ['🍰', '🍵', '🍎']
+  }
+  let [dessert, drink, fruit] = breakfast();
+  console.log(dessert, drink, fruit); // 🍰 🍵 🍎
+
+  // 解构参数
+  function breakfast(dessert, drink, {location, restaurant} = {} ){
+    console.log(dessert, drink, location, restaurant);
+  }
+  breakfast('🍰', '🍺', {location: '济南', restaurant: '董小姐'});  // 🍰 🍺 济南 董小姐
   ```
 
----
+7. #### 字符判断
 
-### React 篇
+  ```javascript
+  let dessert = '🍰',
+      drink = '🍵';
+
+  let breakfast = `今天的早餐是${dessert}和${drink}!`;
+
+  breakfast.startsWith('今天');  // true 判断是否以 ‘今天’ 开头
+  breakfast.endsWith('!')  // true 判断是否以 ‘!’ 结尾
+  breakfast.includes('🍎') // false 判断是否引用了 ‘🍎’
+  ```
+
+8. #### 复制对象
+
+  ```javascript
+  let breakfast = {}
+  Object.assign(
+    breakfast,             // 设置对象
+    { drink: '🍵' }        // 复制源
+  )
+  console.log(breakfast)
+  ```
+
+## React 篇
 
 1. #### 什么是 React
 
