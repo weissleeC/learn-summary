@@ -286,3 +286,5 @@ console.log(fruit)  // fruit is not defined
 
 12. #### React 中 key 的重要性是什么？
   > key 用于识别唯一的 Virtual DOM 元素及其驱动 UI 的相应数据。它们通过回收 DOM 中当前所有的元素来帮助 React 优化渲染。这些 key 必须是唯一的数字或字符串，React 只是重新排序元素而不是重新渲染它们。这可以提高应用程序的性能。
+
+13. #### Hook
