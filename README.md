@@ -1,14 +1,14 @@
 # 学习总结
 
-## HTML 篇
+## 一、HTML 篇
 
-1. #### 说一下 `<label>` 标签的用法
+1. ### `<label>` 标签的用法
   `label` 标签主要是方便鼠标点击使用，扩大可点击的范围，增强用户操作体验
 
 
-## CSS 篇
+## 二、CSS 篇
 
-1. #### css 水平、垂直居中的写法
+1. ### css 水平、垂直居中的写法
 
   _水平居中_
 
@@ -24,7 +24,7 @@
   - `display: flex + align-items: center`
   - `display: table + display: tabel-cell + vartical-align: middle`
 
-2. #### 盒子模型
+2. ### 盒子模型
 
   盒模型的组成，由里向外 content,padding,border,margin
   在 IE 盒子模型中，width 表示 content+padding+border 这三个部分
@@ -35,15 +35,15 @@
   - `box-sizing: content-box` 是 W3C 盒子模型
   - `box-sizing: border-box` 是 IE 盒子模型
 
-3. #### css 的权重级别
+3. ### css 的权重级别
   !important > 内联样式 > ID 选择器 > 类选择器 ｜ 属性选择器 ｜ 伪类选择器 > 元素选择器
 
 
 ## Javascript 篇
 
-> 列举 es6 的新特性
+> es6 的新特性
 
-1. #### 变量声明
+1. ### 变量声明
 
   > 变量声明 `const` 和 `let`，相比之前的 var 变量是没有局部的概念，新变量声明的在局部上做出了优化，不会污染全局。
 
@@ -60,7 +60,7 @@ if(true){
 console.log(fruit)  // fruit is not defined
 ```
 
-2. #### 模板字符串
+2. ### 模板字符串
 
   在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。
   在 es6 之后，基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定 - es6 反引号 ` (``) ` 直接搞定。
@@ -79,7 +79,7 @@ console.log(fruit)  // fruit is not defined
 	console.log(`${name}-lastname`);
   ```
 
-3. #### 箭头函数
+3. ### 箭头函数
   > 只有一个返回值可以忽略掉 {}，只有一个参数可以忽略掉()
   ````javascript
   window.onload = () => {
@@ -89,7 +89,7 @@ console.log(fruit)  // fruit is not defined
   let func = a => console.log(a);
   ````
 
-4. #### 函数的参数默认值
+4. ### 函数的参数默认值
 
   ```javascript
   // es6 before
@@ -104,7 +104,7 @@ console.log(fruit)  // fruit is not defined
   }
   ```
 
-5. #### Spread/Rest 操作符号
+5. ### Spread/Rest 操作符号
 
   > Spread/Rest 指的是 `...`，具体是 Spread 还是 Rest 需要看上下文语境。
 
@@ -124,7 +124,7 @@ console.log(fruit)  // fruit is not defined
   breakfast('🍰', '🍺', '🍎', '🍵', '🍐')  // 🍰 🍺 🍎 🍵 🍐
   ```
 
-6. #### 对象和数组解构
+6. ### 对象和数组解构
 
   > 我们经常需要在对象和数组内提取相关的数据，往往我们需要遍历才能完成。而在 es6 添加了简化这种任务的新特性：解构。解构是一种打破数据解构，将其拆分成更小部分的过程。解构必须提供初始值。即等号左右不能为 null,undefiend 或者不提供，解构的变量如果不存在对象中会被赋值为 `undefiend`，我们可以为解构的变量提供一个人默认值，在属性名字后添加等号和默认值即可
 
@@ -152,7 +152,7 @@ console.log(fruit)  // fruit is not defined
   breakfast('🍰', '🍺', {location: '济南', restaurant: '董小姐'});  // 🍰 🍺 济南 董小姐
   ```
 
-7. #### 字符判断
+7. ### 字符判断
 
   ```javascript
   let dessert = '🍰',
@@ -165,7 +165,7 @@ console.log(fruit)  // fruit is not defined
   breakfast.includes('🍎') // false 判断是否引用了 ‘🍎’
   ```
 
-8. #### 复制对象
+8. ### 复制对象
 
   ```javascript
   let breakfast = {}
@@ -176,9 +176,9 @@ console.log(fruit)  // fruit is not defined
   console.log(breakfast)
   ```
 
-## React 篇
+## 三、React 篇
 
-1. #### 什么是 React
+1. ### 什么是 React
 
   > React 是 Facebook 在 2011 年开发的前端 JavaScript 库。它遵循基于组件的方法，有助于构建可重用的 UI 组件。它用于开发复杂和交互式的 Web 和移动 UI。
 
@@ -197,7 +197,7 @@ console.log(fruit)  // fruit is not defined
   - React 很容易与 Meteor，Angular 等其他框架集成
 - 使用 React，编写 UI 测试用例变得非常容易
 
-2. #### 区分 Real DOM 和 Virtual DOM
+2. ### 区分 Real DOM 和 Virtual DOM
 
   > 当数据的变化实时反映到 UI 上，这时就需要对 DOM 进行操作，但是复杂或频繁的 DOM 操作通常是性能瓶颈产生的原因，为此，React 引入了虚拟 DOM（Virtual DOM）的机制。
 
@@ -222,11 +222,11 @@ console.log(fruit)  // fruit is not defined
         - DOM 操作非常简单
         - 很少的内存消耗
 
-3. #### 什么是 JSX
+3. ### 什么是 JSX
 
   > JSX 是 javascript XML 的简写。 是 React 使用的一种文件，它利用 JavaScript 的表现力和类似 HTML 的模板语法。因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称。 例如，class 变成了 className，而 tabindex 则对应着 tabIndex，for 对应 htmlFor。
 
-4. #### 虚拟 DOM 的工作原理
+4. ### 虚拟 DOM 的工作原理
 
   > 它是一个轻量级的 JavaScript 对象，最初只是在真是 DOM 的副本。它是一个节点树，它将元素、属性、内容作为一个对象及属性。React 的渲染函数 `render()` 从 React 组件中穿件一个节点树，然后它想要数据模型中的变化来更新该树，该变化是有用户或系统完成各种动作引起。
 
@@ -236,23 +236,23 @@ console.log(fruit)  // fruit is not defined
   2. 计算之前的 DOM 表示和新的之间差异
   3. 完成计算后，将只用实际更改的内容更新到真是 DOM
 
-5. #### 为什么浏览器无法读取 JSX？
+5. ### 为什么浏览器无法读取 JSX？
 
   > 浏览器只能处理 JavaScript 对象，而不能读取常规 JavaScript 对象中的 JSX。所以为了使浏览器能够读取 JSX，首先，需要用像 Babel 这样的 JSX 转换器将 JSX 文件转换为 JavaScript 对象，然后再将其传给浏览器。
 
-6. #### React 组件
+6. ### React 组件
 
   > 组件是 React 应用 UI 的构建块。这些组件将整个 UI 分成小的独立并可重用的部分。每个组件彼此独立，而不会影响 UI 的其余部分。
 
-7. #### 解释 React 中 render() 的目的
+7. ### 理解 React 中 render() 的目的
 
-  > 每个 React 组件强制要求必须有一个 `render()`。它返回一个 React 元素，是原生 DOM 组件的表示。如果需要渲染多个 HTML 元素，则必须将它们组合在一个封闭标记内，例如 `<form>`、`<group>`、`<div>` 等。此函数必须保持纯净，即必须每次调用时都返回相同的结果。
+  > 每个 React class 组件强制要求必须有一个 `render()`。它返回一个 React 元素，是原生 DOM 组件的表示。如果需要渲染多个 HTML 元素，则必须将它们组合在一个封闭标记内，例如 `<form>`、`<group>`、`<div>` 等。此函数必须保持纯净，即必须每次调用时都返回相同的结果。
 
-8. #### 如何更新组件的状态？
+8. ### 如何更新组件的状态？
 
   > 可以用 `this.setState()` 更新组件的状态。
 
-9. #### React 组件生命周期的阶段是什么?
+9. ### React 组件生命周期的阶段是什么?
 
   > 三阶段：**初始渲染阶段**、**更新阶段**、**卸载阶段**
 
@@ -261,7 +261,7 @@ console.log(fruit)  // fruit is not defined
 
   * 如果父亲组件更新则是： `componentWillReceiveProps()` -> `shouldComponentUpdate()` -> `componentWillUpdate()` -> `render()` -> `componentDidUpdate()`
 
-10. #### 你对受控组件和非受控组件了解多少
+10. ### 你对受控组件和非受控组件了解多少
 
   **受控组件**
 
@@ -275,7 +275,7 @@ console.log(fruit)  // fruit is not defined
   - 数据由 DOM 控制
   - Resf 用于当前值
 
-11. #### 什么是高阶组件
+11. ### 什么是高阶组件
 
   > 高阶组件是重用组件逻辑的高级方法，是一种源于 React 的组件模式。多用于以下几种：
 
@@ -284,7 +284,7 @@ console.log(fruit)  // fruit is not defined
   - 状态抽象和控制
   - Props 控制
 
-12. #### React 中 key 的重要性是什么？
+12. ### React 中 key 的重要性是什么？
   > key 用于识别唯一的 Virtual DOM 元素及其驱动 UI 的相应数据。它们通过回收 DOM 中当前所有的元素来帮助 React 优化渲染。这些 key 必须是唯一的数字或字符串，React 只是重新排序元素而不是重新渲染它们。这可以提高应用程序的性能。
 
-13. #### Hook
+13. ### Hook
