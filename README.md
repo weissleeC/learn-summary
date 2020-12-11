@@ -261,7 +261,7 @@ console.log(fruit)  // fruit is not defined
 
   * 如果父亲组件更新则是： `componentWillReceiveProps()` -> `shouldComponentUpdate()` -> `componentWillUpdate()` -> `render()` -> `componentDidUpdate()`
 
-10. ### 你对受控组件和非受控组件了解多少
+10. ### 受控组件和非受控组件理解
 
   **受控组件**
 
