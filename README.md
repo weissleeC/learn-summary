@@ -291,6 +291,8 @@ console.log(fruit)  // fruit is not defined
   > 相比 class 方式更简洁一些。
 
   **useState**
+  > 在 useState 里可以设置对象、数组、函数的形式
+
   ```javascript
   const [fruit,setFruit] = useState('🍎');  // 定义了一个接收值和初始值，并初始化一个为 🍎 的值
 
@@ -301,7 +303,71 @@ console.log(fruit)  // fruit is not defined
         htmltype="button" 
         onClick={()=>{ setFruit('🍐') }}
       >换雪梨</button>
-      <hr/>
     </Fragment>
   )
+  ```
+
+  ```javascript
+  const [oBj, setObj] = useState({name: 'Tom', sex: '男'});
+
+  return(
+    <Fragment>
+      <p>{oBj.name}</p>
+      <button
+        htmltype="button"
+        onClick={() =>{ 
+          setObj({...oBj, name: 'Lee'});
+        }}
+      >换名字</button>
+    </Fragment>
+  )
+  ```
+
+  ```javascript
+  const [func, setFunc] = useState(() => {
+    return 'useState 也可以返回一个函数';
+  });
+
+  return(
+    <Fragment>
+      <p>{func}</p>
+      <button
+        htmltype="button"
+        onClick={()=>{
+          setFunc(() => {
+            return '改变内容';
+          })
+        }}
+      >函数形式</button>
+    </Fragment>
+  )
+  ```
+
+  **useEffect**
+  1. `useEffect` 相当于类组件里面的生命周期函数，`componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount`
+  2. `useEffect` 可以在函数中执行副作用操作：DOM 操作、数据请求、组件更新
+  3. `useEffect` 是在组件内部执行的，这样可以获取 `props` 和 `state`，它采用了必包的形式
+  4. `useEffect` 是在组件更新完之后执行的，这样起到了无阻塞更新的作用，保证页面没加载到数据之前能正常渲染
+  5. `useEffect` 可以在一个组件里面存在多个
+
+  ```javascript
+  const [count, setCount] = useState(0);
+
+  // 初始执行 useEffect 相当于类组件的 componentDidMount
+  useEffect(() => {
+    // 当组件更新时候，相当于类组件的 componentDidUpdate
+    console.log(count);
+
+    // return 组件卸载(离开)之后执行的内容，相当于类组件的 componentWillUnmount
+    return () => {
+      console.log('componentWillUnmount');
+    }
+  }, []); // 如果第二个参数为 [] 空数据则为不监听所有的 state 变化。如果加上指定变量则为监听当前变量。
+
+  return(
+    <Fragment>
+      <p>{count}</p>
+      <button onClick={() => {setCount(count+1)}}>累计</button>
+    </Fragment>
+  ); 
   ```
