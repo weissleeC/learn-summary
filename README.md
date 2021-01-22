@@ -81,6 +81,7 @@ console.log(fruit)  // fruit is not defined
 
 3. ### 箭头函数
   > 只有一个返回值可以忽略掉 {}，只有一个参数可以忽略掉()
+
   ````javascript
   window.onload = () => {
     alert('hello, es6');
@@ -109,19 +110,28 @@ console.log(fruit)  // fruit is not defined
   > Spread/Rest 指的是 `...`，具体是 Spread 还是 Rest 需要看上下文语境。
 
   ```javascript
-  // 当被用于迭代器中时，它是一个 Spread 操作符号
-  function foo(x, y, z) {
-    console.log(x, y, z);
-  }
-
+  // 数组展开/收集
   let arr = [1, 2, 3];
-  console.log(...arr); // 1 2 3
+  console.log(...arr); // 1, 2, 3
+  
+  let arr1 = [12, 5, 8];
+  let arr2 = [1, 9, 10];
+  let arr3 = [...arr1, ...arr2]
+  console.log(arr3) // 12, 5, 8, 1, 9, 10
 
   // 用于函数传参时，是一个 Rest 操作符
   function breakfast(dessert, drink, ...foods) {
     console.log(dessert, drink, ...foods);
   }
   breakfast('🍰', '🍺', '🍎', '🍵', '🍐')  // 🍰 🍺 🍎 🍵 🍐
+
+  // json 展开
+  let json = {a: 1, b: 2, c: 3};
+  let json2 = {
+    ...json,
+    d: 999
+  }
+  console.log(json2) // a: 1, b: 2, c: 3, d: 999
   ```
 
 6. ### 对象和数组解构
@@ -173,7 +183,7 @@ console.log(fruit)  // fruit is not defined
     breakfast,             // 设置对象
     { drink: '🍵' }        // 复制源
   )
-  console.log(breakfast)
+  console.log(breakfast);
   ```
 
 ## 三、React 篇
