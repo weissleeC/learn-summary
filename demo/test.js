@@ -46,3 +46,18 @@ function debounce(fu, wait){
     }, wait);
   };
 }
+
+// 原生创建节点
+
+{
+  let root = document.getElementById("root");
+  let fragment = document.createDocumentFragment();
+  let browsers = ['Firefox', 'Chrome', 'Opera', 'Safari', 'Internet Explorer'];
+
+  browsers.forEach(function(browser) {
+    let p = document.createElement('p');
+    p.textContent = browser;
+    fragment.appendChild(p);
+  });
+  root.appendChild(fragment);
+}
