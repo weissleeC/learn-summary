@@ -89,7 +89,7 @@
 
 4. ### css 伪类与伪元素的区别
 
-  _伪类(pseudo-classes)_
+  伪类(pseudo-classes)
 
     + 其核心就是用来选择 DOM 树之外的信息，不能够被普通选择器选择的文档之外的元素，用来添加一些选择器的特殊效果；
     + 比如 `:hover`、`:active`、`:visited`、`:link`、`first-chid`、`:focus`、`:lang` 等
