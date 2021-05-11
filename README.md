@@ -92,7 +92,7 @@
   _伪类(pseudo-classes)_
 
   + 其核心就是用来选择 DOM 树之外的信息，不能够被普通选择器选择的文档之外的元素，用来添加一些选择器的特殊效果；
-  + 比如 `:hover :active`、`:visited`、`:link`、`first-chid`、`:focus`、`:lang` 等
+  + 比如 `:hover`、`:active`、`:visited`、`:link`、`first-chid`、`:focus`、`:lang` 等
   + 由于状态的变化非静态的，所以元素达到一个特定状态时，它可能伪类的样式；当状态改变时，它又失去这个样式。
   + 由此可以看出，它的功能和 class 有些类似，但它是基于文档之外的抽象，所以叫 **伪类**
 
