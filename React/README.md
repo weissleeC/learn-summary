@@ -235,8 +235,7 @@
   ```
 
 ### 十四、 Hook
-  > Hook 是可以在不编写 class 的情况下使用 state 以及其他的 React 特性。
-  > 相比 class 方式更简洁一些。
+  > Hook 是可以在不编写 class 的情况下使用 state 以及其他的 React 特性。相比 class 方式更简洁一些，它是一套工具函数的集合，增加 function 的功能
 
   **useState**
   > 在 useState 里可以设置对象、数组、函数的形式
