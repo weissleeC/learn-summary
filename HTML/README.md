@@ -1,9 +1,9 @@
 # HTML 学习总结
 
-1. ### `<label>` 标签的用法
+### 一、 `<label>` 标签的用法
   `label` 标签主要是方便鼠标点击使用，扩大可点击的范围，增强用户操作体验
 
-2. ### 如何减少 DOM 数量和优化
+### 二、 如何减少 DOM 数量和优化
 
   - _2.1 减少 DOM 数量的方法_
 
@@ -19,7 +19,7 @@
     + 文档片段：利用 `document.createDocumentFragment()` 方法创建文档碎片节点，创建的是一个虚拟的节点对象。向这个节点添加 DOM 节点，修改 DOM 节点并不会影响到真实的 DOM 结构；
     + 虚拟DOM：js 模拟 DOM 树并对 DOM 树操作的一种结束。virtual DOM 是一个纯 JS 对象，所以对他操作会更高效；
 
-3. ### script 的 async 跟 defer 的区别？
+### 三、 script 的 async 跟 defer 的区别？
 
   > 浏览器在执行 HTML 的时候遇到了 `<script>` 时会停止页面的渲染，去下载和执行 js 的文件直接遇见 `</script>` 会继续渲染页面。故浏览器在执行 JS 文件的时候浏览器表现一片空白，为了解决这个问题 ECMAScript 定义了 defer 和 async 两个属性用于控制 JS 的下载和执行。
 

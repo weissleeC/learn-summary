@@ -2,7 +2,7 @@
 
 > es6 的新特性
 
-1. ### 变量声明
+### 一、变量声明
 
   > 变量声明 `const` 和 `let`，相比之前的 var 变量是没有局部的概念，新变量声明的在局部上做出了优化，不会污染全局。
 
@@ -19,7 +19,7 @@ if(true){
 console.log(fruit)  // fruit is not defined
 ```
 
-2. ### 模板字符串
+### 二、模板字符串
 
   在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。
   在 es6 之后，基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定 - es6 反引号 ` (``) ` 直接搞定。
@@ -38,7 +38,7 @@ console.log(fruit)  // fruit is not defined
 	console.log(`${name}-lastname`);
   ```
 
-3. ### 箭头函数
+### 三、箭头函数
   > 只有一个返回值可以忽略掉 {}，只有一个参数可以忽略掉()
 
   ````javascript
@@ -49,7 +49,7 @@ console.log(fruit)  // fruit is not defined
   let func = a => console.log(a);
   ````
 
-4. ### 函数的参数默认值
+### 四、函数的参数默认值
 
   ```javascript
   // es6 before
@@ -64,7 +64,7 @@ console.log(fruit)  // fruit is not defined
   }
   ```
 
-5. ### Spread/Rest 操作符号
+### 五、Spread/Rest 操作符号
 
   > Spread/Rest 指的是 `...`，具体是 Spread 还是 Rest 需要看上下文语境。
 
@@ -93,7 +93,7 @@ console.log(fruit)  // fruit is not defined
   console.log(json2) // a: 1, b: 2, c: 3, d: 999
   ```
 
-6. ### 对象和数组解构
+### 六、对象和数组解构
 
   > 我们经常需要在对象和数组内提取相关的数据，往往我们需要遍历才能完成。而在 es6 添加了简化这种任务的新特性：解构。解构是一种打破数据解构，将其拆分成更小部分的过程。解构必须提供初始值。即等号左右不能为 null,undefiend 或者不提供，解构的变量如果不存在对象中会被赋值为 `undefiend`，我们可以为解构的变量提供一个人默认值，在属性名字后添加等号和默认值即可
 
@@ -121,7 +121,7 @@ console.log(fruit)  // fruit is not defined
   breakfast('🍰', '🍺', {location: '济南', restaurant: '董小姐'});  // 🍰 🍺 济南 董小姐
   ```
 
-7. ### 字符判断
+### 七、字符判断
 
   ```javascript
   let dessert = '🍰',
@@ -134,7 +134,7 @@ console.log(fruit)  // fruit is not defined
   breakfast.includes('🍎') // false 判断是否引用了 ‘🍎’
   ```
 
-8. ### 复制对象
+### 八、复制对象
 
   ```javascript
   let breakfast = {}

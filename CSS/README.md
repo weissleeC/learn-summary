@@ -1,6 +1,6 @@
 # CSS 学习总结
 
-1. ### css 水平、垂直居中的写法
+ ### 一、css 水平、垂直居中的写法
 
   _水平居中_
 
@@ -16,7 +16,7 @@
   - `display: flex + align-items: center`
   - `display: table + display: tabel-cell + vartical-align: middle`
 
-2. ### 盒子模型
+### 二、 盒子模型
 
   盒模型的组成，由里向外 content,padding,border,margin
   在 IE 盒子模型中，width 表示 content+padding+border 这三个部分
@@ -27,11 +27,11 @@
   - `box-sizing: content-box` 是 W3C 盒子模型
   - `box-sizing: border-box` 是 IE 盒子模型
 
-3. ### css 的权重级别
+### 三、 css 的权重级别
   !important > 内联样式 > ID 选择器 > 类选择器 ｜ 属性选择器 ｜ 伪类选择器 > 元素选择器
 
 
-4. ### css 伪类与伪元素的区别
+### 四、 css 伪类与伪元素的区别
 
   _伪类(pseudo-classes)_
 
