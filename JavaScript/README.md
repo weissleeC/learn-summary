@@ -49,6 +49,49 @@ console.log(fruit)  // fruit is not defined
   let func = a => console.log(a);
   ````
 
+  > 箭头函数没有 this，如果访问 this，则会从外部获取。这里 `forEach` 中使用了箭头函数，所以其中的 `this.title` 其实和外部方法 `showList` 的完全一样。那就是：`group.title`。
+
+  例：
+  ```javascript
+  let group = {
+    title: 'Our Group',
+    students: ['John', 'Pete', 'Alice'],
+
+    showList() {
+      this.students.forEach (
+        student => console.log(`${this.title}: ${student}`)
+      );
+    }
+  };
+
+  group.showList();
+  ```
+
+  > 如果我们使用正常的函数，则会出现错误，报错是因为 `forEach` 运行它里面的这个函数，但是这个函数的 `this` 为默认值 `this=undefined`，因此就出现了尝试访问 `undefined.title` 的情况。但箭头函数就没事，因为它们没有 `this`
+
+  例：
+  ```javascript
+  let group = {
+    title: 'Our Group',
+    students: ['John', 'Pete', 'Alice'],
+
+    showList() {
+      this.students.forEach (function(student) {
+        // Error: Cannot read property 'title' of undefined
+        console.log(`${this.title}: ${student}`)
+      });
+    }
+  };
+
+  group.showList();
+  ```
+  **总结**
+  箭头函数：
+  + 没有 `this`
+  + 没有 `arguments`
+  + 不能使用 `new` 进行调用
+  + 它们也没有 `super`
+  
 ### 四、函数的参数默认值
 
   ```javascript
@@ -142,5 +185,8 @@ console.log(fruit)  // fruit is not defined
     breakfast,             // 设置对象
     { drink: '🍵' }        // 复制源
   )
-  console.log(breakfast);
+  console.log(breakfast); // { drink: '🍵' }
   ```
+### 九、Map and Set（映射和集合）
+
+> 
