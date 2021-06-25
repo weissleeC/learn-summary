@@ -187,6 +187,6 @@ console.log(fruit)  // fruit is not defined
   )
   console.log(breakfast); // { drink: '🍵' }
   ```
-### 九、Map and Set（映射和集合）
+### 九、对象方法，"this"
 
 > 
