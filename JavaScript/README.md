@@ -219,3 +219,4 @@ console.log(fruit)  // fruit is not defined
 
   alert(id1 == id2); // false
   ```
+### 十、Map and Set（映射和集合）

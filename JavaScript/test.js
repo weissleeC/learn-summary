@@ -31,7 +31,6 @@
   // console.info(add(3)(4)(5));  // type error
 
   // #5 防抖
-
   function debounce(fu, wait) {
     var timer;
 
@@ -47,8 +46,7 @@
     };
   }
 
-  // 原生创建节点
-
+  // #6 原生创建节点
   {
     let root = document.getElementById("root");
     let fragment = document.createDocumentFragment();
@@ -67,4 +65,15 @@
     });
     root.appendChild(fragment);
   }
+
+  // #7 this 指向问题
+  let name = "lee";
+  let func = {
+    name: "tom",
+    sayHi: function () {
+      console.log(this.name);
+    },
+  };
+
+  func.sayHi();
 }
