@@ -96,8 +96,7 @@
 
   - 初始阶段的流程是：`constructor()` -> `componentWillMount()` -> `render()` -> `componentDidMount()`
   - 更新阶段的流程是：`shouldComponentUpdate()` -> `componentWillUpdate()` -> `render()` -> `componentDidUpdate()`
-
-  * 如果父亲组件更新则是： `componentWillReceiveProps()` -> `shouldComponentUpdate()` -> `componentWillUpdate()` -> `render()` -> `componentDidUpdate()`
+  - 如果父亲组件更新则是： `componentWillReceiveProps()` -> `shouldComponentUpdate()` -> `componentWillUpdate()` -> `render()` -> `componentDidUpdate()`
 
 ### 十、受控组件和非受控组件理解
 
@@ -237,8 +236,18 @@
 ### 十四、 Hook
   > Hook 是可以在不编写 class 组件的情况下使用 state 以及其他的 React 特性。相比 class 组件方式更简洁一些，它是一套工具函数的集合，增加 function 的功能
 
+  **hook 注意事项**
+  - 只能在函数组件中使用 hook 
+  - class 组件不能调用 hook
+  - 普通函数不能调用 hook
+  - 函数组件内部的函数不能调用 hook
+
+  **hook 执行顺序**
+  hook 函数一定要放在函数组件的内的第一层，别放在 if、for、while 
+
   **useState**
   > 在 useState 里可以设置对象、数组、函数的形式
+  > state 在渲染过程中是保持不变的，所有的状态先暂存，等到渲染完成后 state 一块改变
 
   ```javascript
   const [fruit,setFruit] = useState('🍎');  // 定义了一个接收值和初始值，并初始化一个为 🍎 的值
@@ -318,3 +327,11 @@
     </Fragment>
   ); 
   ```
+
+  **useRef/forwardRef**
+
+  **useContext**
+
+  **useReducer**
+
+  **useReducer**

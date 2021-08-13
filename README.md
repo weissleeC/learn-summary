@@ -8,4 +8,4 @@
 
 - [React](https://github.com/weissleeC/learn-summary/tree/master/React)
 
-- [React](https://github.com/weissleeC/learn-summary/tree/master/ECharts)
+- [ECharts](https://github.com/weissleeC/learn-summary/tree/master/ECharts)
