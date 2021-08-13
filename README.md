@@ -7,3 +7,5 @@
 - [JavaScript](https://github.com/weissleeC/learn-summary/tree/master/JavaScript)
 
 - [React](https://github.com/weissleeC/learn-summary/tree/master/React)
+
+- [React](https://github.com/weissleeC/learn-summary/tree/master/ECharts)
