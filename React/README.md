@@ -245,7 +245,7 @@
   **hook 执行顺序**
   hook 函数一定要放在函数组件的内的第一层，别放在 if、for、while 
 
-  **useState**
+  **1. useState**
   > 在 useState 里可以设置对象、数组、函数的形式
   > state 在渲染过程中是保持不变的，所有的状态先暂存，等到渲染完成后 state 一块改变
 
@@ -299,12 +299,22 @@
   )
   ```
 
-  **useEffect**
+  **2. useEffect**
   1. `useEffect` 相当于类组件里面的生命周期函数，`componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount`
   2. `useEffect` 可以在函数中执行副作用操作：DOM 操作、数据请求、组件更新
   3. `useEffect` 是在组件内部执行的，这样可以获取 `props` 和 `state`，它采用了必包的形式
   4. `useEffect` 是在组件更新完之后执行的，这样起到了无阻塞更新的作用，保证页面没加载到数据之前能正常渲染
   5. `useEffect` 可以在一个组件里面存在多个
+  6. `useEffect` 完成移除事件、状态、监听
+
+  > `useEffect` 不能认为等于生存周期函数，只是能用来模拟而已。如果组件程序有很庞大的初始化、移除操作、应该还是用 class(didMount、willwillUnnmount)
+
+  - 错误的使用 useState，会导致内存泄漏
+  1. 内存泄漏指的是某个程序已经被占用了，然而另外一个程序同时也在用同一个空间，导致相互覆盖；
+  2. 导致内存被占用，无法再次被使用；
+  3. 只有在计算机程序重启的时候才会释放；
+  4. 大型程序/服务器程序一般不会重启，不能频繁重启；
+  5. state 是怎么发生内存泄漏：某种异步请求事件比较长，组件已经被卸载，state 还在发生改变。 
 
   ```javascript
   const [count, setCount] = useState(0);
@@ -328,6 +338,54 @@
   ); 
   ```
 
+  ```javascript
+  // 使用 useEffect 制作一个定时器
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+
+    // 必须以函数方式返回，如果这里不 return clearInterval
+    // 那么这个组件则会进入死循环状态，因为每次执行 useEffect 都会改变组件状态重新渲染，这样 setInterval 会无限次数的重复执行
+    return () => {
+      clearInterval(timer);
+    }
+  });
+
+  return <p>{count}</p>
+  ```
+
+  ```javascript
+  // 解决内存 state 产生的内存泄漏
+  export default function Parent() => {
+    const [show, setShow] = useState(true);
+
+    return(
+      <>
+        {show ? <HookUseEffect /> : ""}
+        <button onClick={() => setShow(false)}>display</button>
+      </>
+    )
+  }
+
+  export default function Child() => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      let timer = setTimeout(() => {
+        setCount(count +1);
+      }, 1000)
+
+      // 在这里清除一遍就可以解决内存泄漏问题
+      return () => clearTimeout(timer);
+    });
+
+    return <p>{count}</p>
+  }
+  ```
+  
   **useRef/forwardRef**
 
   **useContext**
