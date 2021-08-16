@@ -6,17 +6,17 @@
 
   **主要功能**
 
-  - 它使用*虚拟 DOM*而不是真正的 DOM。
-  - 它可以用服务器端渲染。
-  - 它遵循单向数据流或数据绑定。
+  - 它使用*虚拟 DOM*而不是真正的 DOM；
+  - 它可以用服务器端渲染；
+  - 它遵循单向数据流或数据绑定；
 
   **主要优点**
 
-  - 它提高了应用的性能
-  - 可以方便地在客户端和服务器端使用
-  - JSX 代码的可读性很好
-  - React 很容易与 Meteor，Angular 等其他框架集成
-  - 使用 React，编写 UI 测试用例变得非常容易
+  - 它提高了应用的性能；
+  - 可以方便地在客户端和服务器端使用；
+  - JSX 代码的可读性很好；
+  - React 很容易与 Meteor，Angular 等其他框架集成；
+  - 使用 React，编写 UI 测试用例变得非常容易；
 
 ### 二、区分 Real DOM 和 Virtual DOM
 
@@ -300,15 +300,14 @@
   ```
 
   **2. useEffect**
-  1. `useEffect` 相当于类组件里面的生命周期函数，`componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount`
-  2. `useEffect` 可以在函数中执行副作用操作：DOM 操作、数据请求、组件更新
-  3. `useEffect` 是在组件内部执行的，这样可以获取 `props` 和 `state`，它采用了必包的形式
-  4. `useEffect` 是在组件更新完之后执行的，这样起到了无阻塞更新的作用，保证页面没加载到数据之前能正常渲染
-  5. `useEffect` 可以在一个组件里面存在多个
-  6. `useEffect` 完成移除事件、状态、监听
-  7. `useEffect` 执行条件是组件重新渲染，根据“跳过”条件，`[]`
-
-  > `useEffect` 不能认为等于生存周期函数，只是能用来模拟而已。如果组件程序有很庞大的初始化、移除操作、应该还是用 class(didMount、willwillUnnmount)
+  1. `useEffect` 相当于类组件里面的生命周期函数，`componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount`；
+  2. `useEffect` 可以在函数中执行副作用操作：DOM 操作、数据请求、组件更新；
+  3. `useEffect` 是在组件内部执行的，这样可以获取 `props` 和 `state`，它采用了必包的形式；
+  4. `useEffect` 是在组件更新完之后执行的，这样起到了无阻塞更新的作用，保证页面没加载到数据之前能正常渲染；
+  5. `useEffect` 可以在一个组件里面存在多个；
+  6. `useEffect` 完成移除事件、状态、监听；
+  7. `useEffect` 执行条件是组件重新渲染，根据“跳过”条件；
+  8. `useEffect` 不能认为等于生存周期函数，只是能用来模拟而已。如果组件程序有很庞大的初始化、移除操作、应该还是用 class(didMount、willwillUnnmount)；
 
   - 错误的使用 useState，会导致内存泄漏
   1. 内存泄漏指的是某个程序已经被占用了，然而另外一个程序同时也在用同一个空间，导致相互覆盖；
