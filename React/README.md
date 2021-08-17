@@ -404,7 +404,100 @@
   )
   ```
 
+  - `forwardRef`
+
+  1. forwardRef 并不是一个 hook，可以理解为"传递引用"；
+  2. 由于函数组件化没有没有实例化概念，所以它是无法被引用，这时就可以用 forwardRef 去帮助应用
+  3. 希望函数组件能被引用的时候，就需要使用 forwardRef
+
+  ```javascript
+  export default funtion Parent() {
+    const cmp = useRef(nul);
+
+    return <Child ref={cmp} />
+  }
+
+  export default forwardRef((props, ref) => {
+    return <input type="text" ref={ref} />
+  })
+  ```
+
+  - string 的 ref 缺点
+  1. string ref 是被动的，它既不像一个函数/事件去处理一些事情，只能记录值；
+  2. 影响 react 性能，如果有同名 ref 存在，则会覆盖掉，只剩下一个；
+  3. 无法回调，需要主动寻找这个 ref
+  4. 无法组合，不够灵活 
+  
   **useContext**
+  > 上下文操作，通畅做 UI 组件更换组题等场景较多。它的作用可以向上找父级你所需要的内容
+  
+  - 父级定义上下文 `createContext`
+  - 子级读取上下文 `useContext`
+
+  ```javascript
+  // app.js
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setTheme("dark");
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  });
+
+  return (
+    <>
+      <Container theme={theme}>
+        <Header>Header</Header>
+        <Main>Main</Main>
+        <Footer>Footer</Footer>
+      </Container>
+    </>
+  );
+
+  // theme.js
+  // 在这里我们创建了一个默认值
+  import { createContext } from "react";
+  export default createContext("light");
+
+  // Container.js
+  // 这里父级定义了上下文
+  // 需要使用 xxx.Provider + value 
+  import Theme from "./Theme";
+  export default (props) => {
+    const { theme = "light" } = props;
+
+    return (
+      <div className="container">
+        <Theme.Provider value={theme}>{props.children}</Theme.Provider>
+      </div>
+    );
+  };
+
+  // Header.js
+  // 使用 useContext
+  import React, { useContext } from "react";
+  import Theme from "./Theme";
+
+  export default (props) => {
+    const theme = useContext(Theme);
+
+    return <div className={theme ? `${theme}` : ""}>{props.children}</div>;
+  };
+
+  // Footer.js
+  import React, { useContext } from "react";
+  import Theme from "./Theme";
+
+  export default (props) => {
+    // 组件单独定义 theme
+    const theme = props.theme || useContext(Theme);
+
+    return <div className={theme ? `${theme}` : ""}>{props.children}</div>;
+  };
+
+  ```
 
   **useReducer**
 
