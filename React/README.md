@@ -243,7 +243,7 @@
   - 函数组件内部的函数不能调用 hook
 
   **hook 执行顺序**
-  hook 函数一定要放在函数组件的内的第一层，别放在条件层里面 if、for、while 
+  hook 函数一定要放在函数组件的内的第一层，或者是自定义 use 开头的 hook 下，别放在条件层里面 if、for、while 
 
   **1. useState**
   > 在 useState 里可以设置对象、数组、函数的形式
@@ -501,4 +501,74 @@
 
   **useReducer**
 
-  **useReducer**
+  > 这个 hook 极少数情况下会用到
+
+  ```javascript
+  function reducer(state, action) {
+    console.log(state);
+    switch (action.type) {
+      case "add":
+        return {
+          count: state.count + 1,
+        };
+      case "minus":
+        return {
+          count: state.count - 1,
+        };
+      default:
+        return state;
+    }
+  }
+
+  export default function HookUseReducer() {
+    // 使用 useReducer 并把事件函数和默认值传入
+    const [state, dispatch] = useReducer(reducer, { count: 0, sum: 10 });
+    return (
+      <>
+        state: {state.count}
+        <button onClick={() => dispatch({ type: "add" })}>+1</button>
+        <button onClick={() => dispatch({ type: "minus" })}>-1</button>
+      </>
+    );
+  }
+  ```
+
+  **自定义 hook**
+
+  - 所有的 hook 是以 use 开头的，所以自定义 hook 也必须以 use 开头；
+  - 如果需要完成比较复杂的自定义 hook 得依赖 useReducer；
+
+  ```javascript
+  // 自定义 hook 监听网络状态
+  function useOnline() {
+    const [online, setOnline] = useState(navigator.onLine);
+
+    useEffect(() => {
+      const handlerOnline = () => setOnline(true);
+      const handlerOffline = () => setOnline(false);
+
+      window.addEventListener("online", () => handlerOnline, false);
+      window.addEventListener("offline", () => handlerOffline, false);
+
+      return () => {
+        window.removeEventListener("online", () => handlerOnline, false);
+        window.removeEventListener("offline", () => handlerOffline, false);
+      };
+    });
+
+    return online;
+  }
+
+  export default function CustomizeHook() {
+    const online = useOnline();
+    return (
+      <>
+        {online ? (
+          <div style={{ color: "green" }}>online: 已连接</div>
+        ) : (
+          <div style={{ color: "red" }}>offline: 已断网</div>
+        )}
+      </>
+    );
+  }
+  ```
