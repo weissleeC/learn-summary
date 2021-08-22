@@ -501,8 +501,6 @@
 
   **useReducer**
 
-  > 这个 hook 极少数情况下会用到
-
   ```javascript
   function reducer(state, action) {
     console.log(state);
@@ -572,3 +570,82 @@
     );
   }
   ```
+
+  **Hook 生态圈**
+
+  > redux 和 router 都有提供了 hook 的使用方法
+
+  - router:
+    1. `useHistory` 实例操作集合：push、replace、back、...
+    2. `useLocation` 各种信息：path、query、params...
+    3. `useParams` 实例路由参数
+    4. `useRouteMatch` 提供路由信息
+
+    ```javascript
+    // index.js
+    import { BrowserRouter as Router } from "react-router-dom";
+
+    ReactDOM.render(
+      <Router>
+        <App />
+      </Router>,
+      document.getElementById("root")
+    );
+
+    // app.js
+    import { useHistory, useLocation } from "react-router-dom";
+
+    export default props => {
+      const history = useLocation();
+      return console.log(history);
+    }
+    ```
+
+  - redux
+    1. useSelector——获取数据 `let 数据 = useSelector(state=>结果, 比较函数)`
+    2. useDispatch——发送action、修改数据 `let dispatch = useDispatch()`;
+      dispatch(action); //type, value
+    
+    ```javascript
+    // index.js
+    import { createStore } from 'redux';
+    import { Provider } from 'react-redux';
+
+    const store=createStore((state={name: 'blue', age: 18}, action) => {
+      switch(action.type){
+        case 'setName':
+          return {
+            ...state,
+            name: action.value
+          };
+        default:
+          return state;
+      }
+    });
+
+    ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.getElementById('root')
+    );
+    
+    // app.js
+    import {useSelector, useDispatch} from 'react-redux';
+
+    export default function (){
+      const name = useSelector(state => {
+        return state.name;
+      });
+      const dispatch = useDispatch();
+
+      return (
+        <>
+          name: {name}
+          <button type="button" onClick={ev => {
+            dispatch({type: 'setName', value: 'zhangsan'})
+          }}>按钮</button>
+        </>
+      );
+    };
+    ```
