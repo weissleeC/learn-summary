@@ -76,4 +76,13 @@
   };
 
   func.sayHi();
+
+  // #8 块作用域问题
+  let aBtn = document.getElementsByTagName("input");
+  // for 这里如果用了 var， i 值一直是最大值，改用 let 就正常循环
+  for (let i = 0; i < aBtn.length; i++) {
+    aBtn[i].onclick = function () {
+      console.log(i);
+    };
+  }
 }
