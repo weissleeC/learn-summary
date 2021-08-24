@@ -85,4 +85,60 @@
       console.log(i);
     };
   }
+
+  // #9 箭头函数数组排序
+  {
+    let arr = [12, 8, 37, 26, 9];
+    arr.sort((n1, n2) => n1 - n2);
+    console.log(`#9 数组排序${arr}`);
+  }
+
+  // #10 构造函数使用箭头函数
+  {
+    class Json {
+      constructor() {
+        console.log(this);
+
+        this.a = 12;
+
+        this.fn = () => console.log(this.a);
+      }
+    }
+
+    let json = new Json();
+    json.fn();
+  }
+
+  // #11 Map 映射
+  {
+    let grades = [68, 53, 12, 98, 65];
+    let result = grades.map((item) => (item >= 60 ? "及格" : "不及格"));
+    console.log(result); // ["及格", "不及格", "不及格", "及格", "及格"]
+  }
+
+  // #12 reduce
+  {
+    let grades = [68, 53, 12, 98, 65];
+    let result = grades.reduce((tmp, item, index) => {
+      console.log(`第${index}次是：${tmp}：${item}`);
+      // 求和
+      // return tmp + item;
+
+      // 求平均数
+      if (index === grades.length - 1) {
+        return (tmp + item) / grades.length;
+      } else {
+        return tmp + item;
+      }
+    });
+    console.log(result);
+  }
+
+  // #13 filter
+  {
+    // 筛选出偶数
+    let grades = [68, 53, 12, 98, 65];
+    let result = grades.filter((item) => item % 2 == 1);
+    console.log(`#13 ${result}`); // 68,12,98
+  }
 }
