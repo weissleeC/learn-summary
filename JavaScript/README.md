@@ -302,9 +302,7 @@ console.log(fruit)  // fruit is not defined
   console.log(result); // grades 总和 296
   ```
 
-  - **filter**
-
-  > 过滤
+  - **filter 过滤**
 
   ```javascript
   // 筛选出偶数
