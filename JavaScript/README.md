@@ -285,9 +285,9 @@ console.log(fruit)  // fruit is not defined
 
   > 传入多少内容只返回一个，它共有三个参数
 
-  + `total` 参数一是计算初始值
-  + `currentValue` 参数二是被计算值，当前元素
-  + `currentIndex` 参数三是当前索引值
+    + `total` 参数一是计算初始值
+    + `currentValue` 参数二是被计算值，当前元素
+    + `currentIndex` 参数三是当前索引值
 
   ```javascript
   let grades = [68, 53, 12, 98, 65];
