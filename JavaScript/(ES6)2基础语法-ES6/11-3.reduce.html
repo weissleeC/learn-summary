@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    let arr=[68, 53, 12, 98, 65];
+
+    let result=arr.reduce(function (tmp, item, index){
+      if(index==arr.length-1){    //最后一次
+        return (tmp+item)/arr.length;
+      }else{
+        return tmp+item;
+      }
+    });
+
+    alert(result);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

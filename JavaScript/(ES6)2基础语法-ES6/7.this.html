@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    let json={
+      a: 12,
+      fn: function (){
+        console.log(this);
+        alert(this.a);
+      }
+    };
+
+    //json.fn();
+
+    let oDate=new Date();
+    oDate.fn=json.fn;
+
+    oDate.fn();
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

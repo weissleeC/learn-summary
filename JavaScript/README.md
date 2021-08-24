@@ -332,3 +332,74 @@ console.log(fruit)  // fruit is not defined
       "presets": ["@babel/preset-env"]
     }
     ```
+
+### 十三、异步操作
+
+  - **Promise**
+  
+  > 1. 主要用于异步计算;
+  2. 可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果;
+  3. 可以在对象之间传递和操作promise，帮助我们处理队列;
+
+  ```javascript
+  let result = new Promise((resolove, reject) => {
+    // 异步处理
+    // 处理结束后、调用resolve 或 reject
+    $.ajax({
+      url: "./asset/data1.txt",
+      dataType: "json",
+      success(arr) {
+        return resolove(arr);
+      },
+      error(res) {
+        reject(res);
+      },
+    });
+  });
+
+  result.then(
+    (arr) => {
+      console.log(arr);
+    },
+    (res) => {
+      console.log(res);
+    }
+  );
+  ```
+
+  ```javascript
+  Promise.all([
+    $.ajax({ url: "./asset/data1.txt", dataType: "json" }),
+    $.ajax({ url: "./asset/data2.txt", dataType: "json" }),
+    $.ajax({ url: "./asset/data3.txt", dataType: "json" }),
+  ]).then(
+    (arr) => {
+      let [data1, data2, data3] = arr;
+      console.log(data1, data2, data3);
+    },
+    (res) => console.log(res);
+  );
+  ```
+
+  - **async/await**
+
+  > `async` 是一个方法，常用于函数前面，声明函数体里面有异步操作，普通函数是在函数体里面执行到解释，而 `async` 在函数体里面可以暂停
+
+  ```javascript
+  async function show() {
+    let a = 1;
+    let b = 2;
+
+    try {
+      let result = await $.ajax({
+        url: "./asset/data2.txt",
+        dataType: "json",
+      });
+      console.log(a + b + result[2]);
+    } catch (e) {
+      console.log("读取失败");
+    }
+  }
+
+  show();
+  ```

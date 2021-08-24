@@ -19,24 +19,26 @@
   minArgs("x"); // true false false
 
   // # 4
-  var add = function (m) {
-    var temp = function (n) {
-      return m + n;
+  {
+    let add = function (m) {
+      let temp = function (n) {
+        return m + n;
+      };
+      temp.toString = function () {
+        return m.toString(2);
+      };
+      return temp;
     };
-    temp.toString = function () {
-      return m.toString(2);
-    };
-    return temp;
-  };
+  }
   // console.info(add(3)(4)(5));  // type error
 
   // #5 防抖
   function debounce(fu, wait) {
-    var timer;
+    let timer;
 
     return function () {
-      var context = this;
-      var args = arguments;
+      let context = this;
+      let args = arguments;
 
       clearTimeout(timer);
 
@@ -67,23 +69,27 @@
   }
 
   // #7 this 指向问题
-  let name = "lee";
-  let func = {
-    name: "tom",
-    sayHi: function () {
-      console.log(this.name);
-    },
-  };
+  {
+    let name = "lee";
+    let func = {
+      name: "tom",
+      sayHi: function () {
+        console.log(this.name);
+      },
+    };
 
-  func.sayHi();
+    func.sayHi();
+  }
 
   // #8 块作用域问题
-  let aBtn = document.getElementsByTagName("input");
-  // for 这里如果用了 var， i 值一直是最大值，改用 let 就正常循环
-  for (let i = 0; i < aBtn.length; i++) {
-    aBtn[i].onclick = function () {
-      console.log(i);
-    };
+  {
+    let aBtn = document.getElementsByTagName("input");
+    // for 这里如果用了 let， i 值一直是最大值，改用 let 就正常循环
+    for (let i = 0; i < aBtn.length; i++) {
+      aBtn[i].onclick = function () {
+        console.log(i);
+      };
+    }
   }
 
   // #9 箭头函数数组排序
@@ -140,5 +146,66 @@
     let grades = [68, 53, 12, 98, 65];
     let result = grades.filter((item) => item % 2 == 1);
     console.log(`#13 ${result}`); // 68,12,98
+  }
+
+  // #14 Promise
+  {
+    let result = new Promise((resolove, reject) => {
+      // 异步处理
+      // 处理结束后、调用resolve 或 reject
+      $.ajax({
+        url: "./asset/data1.txt",
+        dataType: "json",
+        success(arr) {
+          return resolove(arr);
+        },
+        error(res) {
+          reject(res);
+        },
+      });
+    });
+
+    result.then(
+      (arr) => {
+        console.log(arr);
+      },
+      (res) => {
+        console.log(res);
+      }
+    );
+  }
+
+  {
+    Promise.all([
+      $.ajax({ url: "./asset/data1.txt", dataType: "json" }),
+      $.ajax({ url: "./asset/data2.txt", dataType: "json" }),
+      $.ajax({ url: "./asset/data3.txt", dataType: "json" }),
+    ]).then(
+      (arr) => {
+        let [data1, data2, data3] = arr;
+        console.log(data1, data2, data3);
+      },
+      (res) => console.log(res)
+    );
+  }
+
+  // #15 async
+  {
+    async function show() {
+      let a = 1;
+      let b = 2;
+
+      try {
+        let result = await $.ajax({
+          url: "./asset/data2.txt",
+          dataType: "json",
+        });
+        console.log(a + b + result[2]);
+      } catch (e) {
+        console.log("读取失败");
+      }
+    }
+
+    show();
   }
 }
