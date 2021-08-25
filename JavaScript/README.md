@@ -451,3 +451,54 @@ b.showJob();
 ```
 
 ### 十五、模块化
+
+> 在没模块化概念前，使用的是 src 的方式引入 js，这种方式极其不便了，会产生代码重复，命名冲突。
+> 模块化的演变：没有模块化-> CMD -> AMD -> 语言提供支持
+> 模块化可以使你的代码低耦合，功能模块直接不相互影响
+
+1. 可维护性：根据定义，每个模块都是独立的。良好设计的模块会尽量与外部的代码撇清关系，以便于独立对其进行改进和维护。维护一个独立的模块比起一团凌乱的代码来说要轻松很多。
+2. 命名空间：在JavaScript中，最高级别的函数外定义的变量都是全局变量（这意味着所有人都可以访问到它们）。也正因如此，当一些无关的代码碰巧使用到同名变量的时候，我们就会遇到“命名空间污染”的问题。
+3. 可复用性：现实来讲，在日常工作中我们经常会复制自己之前写过的代码到新项目中。
+
+```javascript
+// mod1.js
+// 默认输出了两个变量
+export let a = '🍎';
+export let b = '🍌';
+
+// index.js
+// 引入 mod1.js 
+// * 号为导出所有并以 mo1 命名
+import * as mod1 from './mod1';
+// 使用
+console.log(mod1.a) // 🍎
+```
+
+**export 的用法**
+
+```javascript
+// 导出多个
+let a = '🍎' , b = '🍌', c = '🍒';
+
+export { a, b, c}
+
+// 导出函数
+export function show() {...}
+
+// 导出类
+export class Person {...}
+
+// 默认导出
+export default let a = '🍎';
+import mod from 'mod';
+console.log(mod) // 🍎
+
+// 如果有相同的名字，可以取别名
+import {a, b as name2} from 'mod';
+
+// 引入文件
+import 'style.css'
+
+// 异步引入
+let mod = import('./mod');
+```
