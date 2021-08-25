@@ -47,22 +47,22 @@ console.log(fruit)  // fruit is not defined
 
 ### 二、模板字符串
 
-  在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。
-  在 es6 之后，基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定 - es6 反引号 ` (``) ` 直接搞定。
+在 es6 之前，我们需要通过 "\" 和 "+" 来构建模版。
+在 es6 之后，基本的字符串格式化，将表达嵌入字符串中进行拼接，用 `${}` 来界定 - es6 反引号 ` (``) ` 直接搞定。
 
-  ```javascript
-  // es 6 前
-  $("body").html(
-    "This demonstrates the output of HTML  content to the page, including student's " + name + ", " + seatNumber + ", " + sex + " and so on."
-  );
-  console.log(name + '-lastname');
+```javascript
+// es 6 前
+$("body").html(
+  "This demonstrates the output of HTML  content to the page, including student's " + name + ", " + seatNumber + ", " + sex + " and so on."
+);
+console.log(name + '-lastname');
 
-  // es 6 后
-  $("body").html(
-    `This demonstrates the output of HTML content to the page, including student's ${name}, ${seatNumber}, ${sex} and so on.`
-  );
-	console.log(`${name}-lastname`);
-  ```
+// es 6 后
+$("body").html(
+  `This demonstrates the output of HTML content to the page, including student's ${name}, ${seatNumber}, ${sex} and so on.`
+);
+console.log(`${name}-lastname`);
+```
 
 ### 三、箭头函数
   > 只有一个返回值可以忽略掉 {}，只有一个参数可以不写()
