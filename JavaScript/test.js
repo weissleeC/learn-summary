@@ -208,4 +208,42 @@
 
     show();
   }
+
+  // #16 class
+  {
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      showName() {
+        console.log(this.name);
+      }
+
+      showAge() {
+        console.log(this.age);
+      }
+    }
+
+    const a = new Person("lee", "27");
+    a.showName();
+    a.showAge();
+
+    // 创建一个 class 继承 Person
+    class Works extends Person {
+      constructor(name, age, job) {
+        super(name, age);
+
+        this.job = job;
+      }
+
+      showJob() {
+        console.log(this.job);
+      }
+    }
+
+    const b = new Works("tom", "25", "前端开发");
+    b.showJob();
+  }
 }

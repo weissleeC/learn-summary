@@ -372,7 +372,7 @@ console.log(fruit)  // fruit is not defined
     $.ajax({ url: "./asset/data1.txt", dataType: "json" }),
     $.ajax({ url: "./asset/data2.txt", dataType: "json" }),
     $.ajax({ url: "./asset/data3.txt", dataType: "json" }),
-  ]).then(
+  ]).then( 
     (arr) => {
       let [data1, data2, data3] = arr;
       console.log(data1, data2, data3);
@@ -383,7 +383,7 @@ console.log(fruit)  // fruit is not defined
 
   - **async/await**
 
-  > `async` 是一个方法，常用于函数前面，声明函数体里面有异步操作，普通函数是在函数体里面执行到解释，而 `async` 在函数体里面可以暂停
+  > `async` 是一个语法，用于函数前面，声明函数体里面有异步操作；普通函数是在函数体里面执行到结束；
 
   ```javascript
   async function show() {
@@ -403,3 +403,51 @@ console.log(fruit)  // fruit is not defined
 
   show();
   ```
+
+### 十四、面向对象
+
+> 面向对象指的是一种编程的方法，其中包含了一些，数据、特性、代码与方法等特性，主要特征就是封装。
+
+- `class` 类声明
+- `constructor` 构造函数定义属性
+- `extends` 继承指定类，同时也继承里面的方法
+- `super` 声明继承父类的属性内容
+
+```javascript
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  showName() {
+    console.log(this.name);
+  }
+
+  showAge() {
+    console.log(this.age);
+  }
+}
+
+const a = new Person("lee", "27");
+a.showName();
+a.showAge();
+
+// 创建一个 class 继承 Person
+class Works extends Person {
+  constructor(name, age, job) {
+    super(name, age);
+
+    this.job = job;
+  }
+
+  showJob() {
+    console.log(this.job);
+  }
+}
+
+const b = new Works("tom", "25", "前端开发");
+b.showJob();
+```
+
+### 十五、模块化
