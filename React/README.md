@@ -652,4 +652,35 @@
 
   **useMemo & useCallback**
 
-  
+  > 如果有大量的数据需要计算，则可以使用 `useMemo` 去监听指定数据变化而更新
+
+  ```javascript
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(0);
+  const [c, setC] = useState(0);
+
+  // const sum = a + b;
+  // console.log(`当点击按钮时候，sum 同时也在更新: ${sum}`);
+
+  // 使用 useMemo 解决非必要更新
+  // 第一个参数为一个函数，需要 return
+  // 第二个参数为一个数组，监听里面的值是否有变化
+  const sum = useMemo(() => {
+    return a + b;
+  }, [a, b]);
+
+  return (
+    <Fragment>
+      <input value={a} onChange={(ev) => setA(Number(ev.target.value))} />
+      +
+      <input value={b} onChange={(ev) => setB(Number(ev.target.value))} />={sum}
+      <hr />
+      <button type="button" onClick={() => setC(c + 1)}>
+        add
+      </button>
+      {c}
+    </Fragment>
+  );
+  ```
+
+  > `useCallback` 是用于函数之间变化，假如组件状态更新了，而不想某个函数重新执行，则可以用 `useCallback`
