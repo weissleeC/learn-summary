@@ -429,7 +429,7 @@
   4. 无法组合，不够灵活 
   
   **useContext**
-  > 上下文操作，通畅做 UI 组件更换组题等场景较多。它的作用可以向上找父级你所需要的内容
+  > 上下文操作，通常做 UI 组件更换组题等场景较多。它的作用可以向上找父级你所需要的内容
   
   - 父级定义上下文 `createContext`
   - 子级读取上下文 `useContext`
@@ -604,7 +604,7 @@
   - redux
     1. useSelector——获取数据 `let 数据 = useSelector(state=>结果, 比较函数)`
     2. useDispatch——发送action、修改数据 `let dispatch = useDispatch()`;
-      dispatch(action); //type, value
+        ``dispatch(action); //type, value``
     
     ```javascript
     // index.js
