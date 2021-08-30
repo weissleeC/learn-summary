@@ -3,7 +3,3 @@
 ### 一、区分 Real DOM 和 Virtual DOM
 
 ### 二、React 有什么特点
-
-- Virtual DOM
-- 状态管理、视图同步
-- 
