@@ -30,6 +30,55 @@ const c = new foo()
 - **怎么阻止事件冒泡**：事件对象 `stopPropagation()`
 - **事件冒泡作用**：事件冒泡允许多个操作被集中处理，比如把事件处理器添加到一个父级元素上，避免把事件处理器添加到多个子元素上（再多子元素，只需要添加一次事件就好了）
 
+```html
+<form id="form1" runat="server">
+  <div id="divOne" onclick="alert('我是最外层！');">
+      <div id="divTwo" onclick="alert('我是中间层！')">
+          <a id="link" href="http://www.baidu.com" onclick="alert('我是最里层！')">最里层</a>
+      </div>
+  </div>
+</form>
+```
+
+```javascript
+/* 
+return false 并不是终止事件，而是阻止事件宿主的默认行为
+所以还会冒泡,a链接本生的跳转行为不执行
+*/
+document.getElementById("link").onclick = function (event) {
+    return false;
+}
+/* 
+event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
+*/
+// document.getElementById("link").onclick = function (event) {
+//     event.stopPropagation();
+// }
+```
+
+### 二、事件委托
+
+- **概念**：事件委托是利用事件的冒泡原理来实现的，比如我们平时在给ul中的li添加事件的时候，我们都是通过for循环一个个添加，如果li很多个的话，其实就有点占内存了，这个时候可以用 事件代理来优化性能
+- **作用**：
+  + 遍历孩子，绑定事件，存在性能问题
+  + li（孩子）如果是动态添加的，那么必须用事件委托
+- **原理**：事件委托是通过事件冒泡实现的
+
+```html
+<div class="btn-layout">
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+</div>
+<script>
+  document.getElementsByClassName("btn-layout")[0].onclick = function(e){
+    console.log(e);
+  }
+</script>
+```
 
 <hr/>
 
