@@ -85,3 +85,30 @@
   - CSS3 2D转换
   - CSS3 动画
   - CSS3 3D转换
+
+
+### 六、移动端常见布局
+
+  - 流式布局也叫百分比布局
+  - flex布局也叫弹性布局
+  - Less+rem+媒体查询布局，实际用 flexible.js+rem 居多
+  - 响应式布局也就是利用 bootstrap
+  - 混合布局,可以根据不同的组件需求 ,做出相应的 布局方式 ,并不局限在哪一种 ,例如我们全局使用rem适配 ,部分盒子照样用flex布局 可以混用,并不影响.(同上rem里面运用了flex)
+
+### 七、媒体查询
+
+  - 媒体查询是 css3 语法，可以实现根据不同屏幕适配不同的样式
+  - 利用媒体查询实现不同屏幕适配不同样式，发现规律可简写为判断min-width 可以从小到大写即可
+
+  ```css
+  @media screen and (max-width:800px) {
+    ...
+  }
+  ```
+
+  Link标签也可利用媒体查询实现按需引入
+
+  ```html
+ <link rel="stylesheet" href="style320.css" media="screen and(min-width: 320px)">
+ <link rel="stylesheet" href="style640.css" media="screen and(min-width: 640px)">
+  ```
