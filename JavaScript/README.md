@@ -88,13 +88,7 @@ event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
 - 处于目标阶段：处在绑定事件的元素上；
 - 事件冒泡阶段：事件由具体的元素先接收，然后逐级向上传播，直到不具体的元素；
 
-**事件捕获是从上到下，而事件冒泡，是从下到上**
-
-### setTimeout 和 setInterval 的区别
-
-- 使用 `setTimeout()` 开启的定时器，时间间隔一到代码只会执行 1 次；
-- 使用 `setInterval()` 开启的定时器，时间一到代码就会执行；
-- 使用 `clearTimeout()` 和 `clearInterval()` 可以清除定时器；
+**事件捕获是从上到下，而事件冒泡是从下到上**
 
 ### 四、解决移动端 click 事件 300ms
 
@@ -170,6 +164,12 @@ event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
 - 如果还没有找到就会再在构造函数 `prototype` 的 `__proto__` 隐式原型中查找；
 - 直到构造函数原型对象 `prototype` 的 `__proto__` 隐式原型指向为 `null` 就停止；
 - 这样一层一层向上查找就会形成一个链式结构，我们称为原型链；
+
+### 十三、setTimeout 和 setInterval 的区别
+
+- 使用 `setTimeout()` 开启的定时器，时间间隔一到代码只会执行 1 次；
+- 使用 `setInterval()` 开启的定时器，时间一到代码就会执行；
+- 使用 `clearTimeout()` 和 `clearInterval()` 可以清除定时器；
 
 <hr/>
 
