@@ -59,3 +59,42 @@
     + 浮动
     + 绝对定位
     + 固定定位
+
+### 五、图片上传的方式
+  1. html表单上传
+    - 使用 `form` 表单的input `[type="file"]` 控件；
+    - `form` 表单的 `enctype` 必须是 `multipart/form-data`；
+  2. XMLHttpRequest 配合 FormData
+    - `XMLHttpRequest` 的 `send` 方法负责发送请求；
+    - `FormData` 负责存储图片；
+  3. Ajax + formdata 上传
+    - `jQuery` 的 `ajax()` 方法负责发送请求；
+    - `FormData` 负责存储图片；
+  4. 三方插件
+    - 百度上传插件 `Web Uploader`；
+    - `jQuery` 图片预览插件 `imgPreview`；
+    - 拖拽上传与图像预览插件 `Dropzone.js` 等等；
+
+### 六、跨域
+  - **什么是跨域**：向`非同源`地址发送 Ajax 请求就是跨域；
+  - **什么是非同源**：协议（protocol）、主机（host）和端口号（port）三者之一不同；
+  - **什么是浏览器的同源策略**
+    + 浏览器上为安全性考虑实施的非常重要的安全策略；
+    + 浏览器会限制脚本中发起的跨域请求，比如：使用 `XMLHttpRequest` 对象和 `Fetch` 发起 `HTTP` 请求就必须遵守同源策略；
+    + `<script>、<img>、<iframe>、<link>` 等标签都可以加载跨域资源，而不受同源限制；
+  - **跨域的常见方案**
+    + `JSONP` 是服务器与客户端跨源通信的常用方法，兼容性好（兼容低版本IE），缺点是只支持 `get` 请求，不支持 `post` 请求；
+    + `CORS` 是跨域资源分享（Cross-Origin Resource Sharing）的缩，它是 W3C 标准，属于跨源 `AJAX` 请求的根本解决方法；
+    + 使用代理服务器，比如 `axios` 可以配置代理解决跨域；
+    + 设置 `document.domain` 解决无法读取非同源网页的 `Cookie` 问题；
+    + 跨文档通信 API：`window.postMessage()`；
+
+### 七、get 和 post 区别
+
+|  请求方式      |  GET  | POST  |
+|  :----:       |  :----:  | :----:  |
+|  参数位置       |  URL 的 query | 一般在 content 中，query 也可以 |
+|  参数大小       |  受限于浏览器 url 大小，一般不超过 32 k | 1 G |
+|  服务器数据接收  |  接收 1 次 | 根据数据大小，可分多次接收 |
+|  使用场景(语义)  |  从服务器端获取数据，不做增删改 | 想服务器提交数据，如做增删改操作 |
+|  安全性         |  参数携带在 url 中，安全性低 | 相对于 GET 请求，安全性更高 |
