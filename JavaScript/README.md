@@ -278,6 +278,13 @@ function sayHello(e) {
 window.addEventListener('resize', throttle(sayHello))
 ```
 
+### 十九、JavaScript 中的堆栈
+
+- js 引擎中对变量的存储主要有两种位置，堆内存和栈内存；
+- JavaScript 类型和存储位置：
+  + js 中有 5 种基本类型：Undefined、Null、Boolean、Number 和 String，基本类型在内存中占据空间小、大小固定 ，他们的值保存在栈(stack)空间；
+  + 引用类型（对象、数组、函数），引用类型占据空间大、大小不固定，栈内存中存放地址指向堆(heap)内存中的对象；
+
 <hr/>
 
 ## ES6 的新特性
