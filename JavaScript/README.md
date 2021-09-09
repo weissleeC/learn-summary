@@ -236,6 +236,48 @@ event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
   + 防抖是让方法*合并执行*；
   + 节流是让方法*均匀执行*；
 
+```javascript
+// ----------------- 防抖在指定的时间内容只执行最后一次
+function debounce(fn) {
+  let timeout = null; // 创建一个标记用来标记定时器的返回值
+
+  return function () {
+    clearTimeout(timeout);  // 每当用户输入的时候把前一个 setTimeout clear 掉
+    timeout = setTimeout(() => { // 重新创建一个新的 setTimeout，这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会只想 fn 函数
+      fn.apply(this, arguments);
+    }, 1000)
+  };
+};
+
+function sayHi(value) {
+  console.log('防抖成功');
+}
+
+let inp = document.getElementById('inp');
+inp.addEventListener('input', debounce(sayHi))
+
+// ----------------- 节流在 n 秒内只会执行一次
+function throttle(fn) {
+  let canRun = true;  // 通过闭包保存一个标记
+  return function () {
+    if (!canRun) return;  // 在函数开头判断标记是否为 true，不为 true 则 return
+    canRun = false; // 立即设置为 false
+
+    setTimeout(() => {  // 将外部传入的函数放在 setTimeout 中执行
+      fn.apply(this, arguments);
+      // 最后在 setTimeout 执行完毕后再把标记设置为 true (关键)，表示可以执行下一次循环了，当定时器没有执行的时候标记永远是 false，在开头被 return 掉
+      canRun = true;
+    }, 3000)
+  }
+};
+
+function sayHello(e) {
+  console.log(e.target.innerWidth, e.target.innerHeight);
+};
+
+window.addEventListener('resize', throttle(sayHello))
+```
+
 <hr/>
 
 ## ES6 的新特性
