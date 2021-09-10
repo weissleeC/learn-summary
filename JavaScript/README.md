@@ -119,7 +119,7 @@ event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
 ### 六、深拷贝和浅拷贝的区别
 
 **什么是深浅拷贝?**
-假设 B 复制了 A，当修改 A 时，看 B 是否会发生变化，如果 B 也跟着变了，说明这是浅拷贝，如果 B 没变，那就是深拷贝；
+假设 B 复制了 A，当修改 A 时，如果 B 也跟着变了，说明这是浅拷贝。如果 B 没变，那就是深拷贝；
 
 **哪里用过深拷贝?**
 列表数据做弹框修改的时候；
@@ -581,7 +581,7 @@ console.log(`${name}-lastname`);
   ```javascript
   // 筛选出偶数
   let grades = [68, 53, 12, 98, 65];
-  let result = grades.filter(item => item % 2 == 1);
+  let result = grades.filter(item => item % 2 == 0);
   console.log(result); // 68,12,98
   ```
 

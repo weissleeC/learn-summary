@@ -211,7 +211,7 @@
     };
     };
 
-    class Child extends React.Component{
+  class Child extends React.Component{
     constructor(...args) {
       super(...args);
     };
