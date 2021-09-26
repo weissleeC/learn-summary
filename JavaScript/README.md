@@ -146,11 +146,36 @@ event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
 
 ### 八、对象原型 __proto__
 
-- 对象都会有一个`__proto__`属性
+- 每个对象都有 `__proto__` 属性，这个属性也就是原型对象；
 - `__proto__` 属性指向构造函数的 `prototype` 原型对象，`__proto__` 对象原型和原型对象 `prototype` 是相同的；
 - 我们对象可以使用构造函数 `prototype` 原型对象的属性和方法，就是因为对象有 `__proto__` 原型的存在；
 - `__proto__` 是一个非标准属性，因此实际开发中，不可以使用这个属性，它存在的意义在于为对象的查找机制提供一个方法，或者说一条路线；
 
+```javascript
+// 1. 通过对象的方法获取
+let cat = {
+  name: '喵喵';
+}
+// 在 cat 对象中的原型添加了一个 eat 方法
+cat.__proto__.eat = function() {
+  console.log("吃鱼")
+}
+// 调用
+cat.eat();
+
+// 2. 通过构造函数获取
+function Cat(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+let cat = new Cat("喵喵", 2);
+// 创建一个方法
+Cat.prototype.eat = function() {
+  console.log("吃鱼");
+}
+cat.eat();
+```
 ### 九、prototype 和 __proto__ 的区别
 
 - `prototype` 是函数才有的属性；
@@ -170,6 +195,7 @@ event.stopPropagation()阻止了冒泡,a链接本生的跳转行为还存在
 - 每一个构造函数都有一个 `prototype` 属性，指向的是该构造函数的原型对象；
 - 每一个实例对象都有一个 `__proto__` 属性，指向的是构造函数的原型对象；
 - 实例对象原型 `__proto__` 和构造函数原型 `prototype` 里面都有一个属性 `constructor` 属性，都指向了构造函数；
+- 所有的方法原型最后都指向了 `Object.prototype` 这个原型上；
 
 ### 十二、原型链
 
@@ -284,6 +310,43 @@ window.addEventListener('resize', throttle(sayHello))
 - JavaScript 类型和存储位置：
   + js 中有 5 种基本类型：Undefined、Null、Boolean、Number 和 String，基本类型在内存中占据空间小、大小固定 ，他们的值保存在栈(stack)空间；
   + 引用类型（对象、数组、函数），引用类型占据空间大、大小不固定，栈内存中存放地址指向堆(heap)内存中的对象；
+
+### 二十、继承
+
+> 继承是面向对象的
+> 使用这种方式我们可以更好的服用以前的开发代码
+> 缩短开发的周期、提升开发效率
+
+**有几种实现方式？**
+
+- 原型链继承：这是比较常见的继承方式之一，其中涉及的构造函数、原型和实例
+
+```javascript
+
+```
+
+- 构造函数继承：借助 `call`，解决原型连资源共享问题
+
+```javascript
+function Parent() {
+  this.name = 'lee';
+}
+
+Parent.prototype.getName = function() {
+  return this.name;
+}
+
+function Child() {
+  Parent.call(this);
+  this.type = 'child'
+}
+
+let child = new Child();
+console.log(child); // Child {name: 'lee', type: 'child'}
+console.log(child.getName()); // child.getName is not a function
+```
+
+- 组合继承
 
 <hr/>
 
